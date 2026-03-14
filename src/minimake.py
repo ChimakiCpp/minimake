@@ -88,12 +88,29 @@ def main():
     """
     target = sys.argv[1]
     build_file = sys.argv[2] if len(sys.argv) > 2 else "build.json"
-    """
+
     build_file = "build.json"
+    flag = 0
     target = sys.argv[1]
     for i,arg in enumerate(sys.argv):
         if arg == "--file":
             build_file = sys.argv[i+1]
+            flag = 1
+        elif i != 0 and flag != 1:
+            target.append(sys.argv[i])
+            flag = 0
+    """
+    # ----------------
+    build_file = "build.json"
+
+    target = sys.argv[1]
+    for i in range(sys.argv):
+        if sys.argv[i] == "--file":
+            build_file = sys.argv[i+1]
+            i += 1
+        elif i != 0:
+            target.append(sys.argv[i])
+
         
 
     # build_file = sys.argv[2] if len(sys.argv) > 2 else "build.json"
