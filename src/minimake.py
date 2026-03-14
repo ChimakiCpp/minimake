@@ -83,9 +83,20 @@ def main():
     # - targets: ビルドするターゲットのリスト
     # - build_file: ビルド定義ファイルのパス（デフォルト: "build.json"）
 
+    
     # 以下コピペ
+    """
     target = sys.argv[1]
     build_file = sys.argv[2] if len(sys.argv) > 2 else "build.json"
+    """
+    build_file = "build.json"
+    target = sys.argv[1]
+    for i,arg in enumerate(sys.argv):
+        if arg == "--file":
+            build_file = sys.argv[i+1]
+        
+
+    # build_file = sys.argv[2] if len(sys.argv) > 2 else "build.json"
 
     config = load_build_file(build_file)
 
