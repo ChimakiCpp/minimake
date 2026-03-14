@@ -21,7 +21,7 @@ def load_build_file(path: str) -> dict:
     # TODO: ここを実装してください
     # ヒント: json.load() を使います
     # push test
-    # push test2
+    # push test3
     pass
 
 
