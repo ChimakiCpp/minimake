@@ -103,7 +103,7 @@ def main():
     # ----------------
     build_file = "build.json"
 
-    target = sys.argv[1]
+    target = []
     for i in range(len(sys.argv)):
         if sys.argv[i] == "--file":
             build_file = sys.argv[i+1]
