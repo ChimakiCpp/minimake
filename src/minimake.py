@@ -103,13 +103,13 @@ def main():
     # ----------------
     build_file = "build.json"
 
-    target = []
+    targets = []
     for i in range(len(sys.argv)):
         if sys.argv[i] == "--file":
             build_file = sys.argv[i+1]
             i += 1
         elif i != 0:
-            target.append(sys.argv[i])
+            targets.append(sys.argv[i])
 
         
 
@@ -117,8 +117,12 @@ def main():
 
     config = load_build_file(build_file)
 
-    if not build_target(config, target):
-        sys.exit(1)
+    for i in range(len(targets)):
+        if not build_target(config, targets[i]):
+            sys.exit(1)
+
+#    if not build_target(config, target):
+ #       sys.exit(1)
     # ここまでコピペ
 
     pass
