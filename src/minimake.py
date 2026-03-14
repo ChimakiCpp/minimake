@@ -18,10 +18,13 @@ def load_build_file(path: str) -> dict:
     Returns:
         パースされた辞書
     """
+    import json
+    with open(path) as f:
+        return json.load(f)
+
+
     # TODO: ここを実装してください
     # ヒント: json.load() を使います
-    # push test
-    # push test3
     pass
 
 
@@ -58,6 +61,13 @@ def build_target(config: dict, target: str) -> bool:
     # ヒント: subprocess.run() を使います
     # shell=True を指定すると、シェルコマンドとして実行できます
     # result.returncode が 0 でなければビルド失敗です
+
+    import subprocess
+    result = subprocess.run(command, shell=True)
+    if result.returncode != 0:
+        return False
+    return True
+
     pass
 
 
@@ -72,6 +82,17 @@ def main():
     # ヒント:
     # - targets: ビルドするターゲットのリスト
     # - build_file: ビルド定義ファイルのパス（デフォルト: "build.json"）
+
+    # 以下コピペ
+    target = sys.argv[1]
+    build_file = sys.argv[2] if len(sys.argv) > 2 else "build.json"
+
+    config = load_build_file(build_file)
+
+    if not build_target(config, target):
+        sys.exit(1)
+    # ここまでコピペ
+
     pass
 
 
